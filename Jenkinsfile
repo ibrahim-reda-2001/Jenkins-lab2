@@ -13,7 +13,7 @@ pipeline {
         }
         stage('ci') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'mo', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh """
                     docker build . -f dockerfile -t ibrahimelmsery1/iti-lab
                     echo \$PASSWORD | docker login -u \$USERNAME --password-stdin
