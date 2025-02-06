@@ -25,6 +25,9 @@ pipeline {
         stage('cd') {
             steps {
                 sh """
+                if [ \$(docker ps -a -q -f name=node-project) ]; then
+                    docker rm -f node-project
+                fi
                 docker run -d -p 3000:3000 --name node-project ibrahimelmsery1/iti-lab
                 """
             }
